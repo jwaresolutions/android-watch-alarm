@@ -74,6 +74,10 @@ class AlarmForegroundService : Service() {
         stopVibration()
         currentAlarmId = alarmId
         isAlarmFiring = true
+        val isSnooze = intent?.getBooleanExtra("is_snooze", false) ?: false
+        if (isSnooze) {
+            AlarmScheduler(applicationContext).clearSnoozeTime()
+        }
 
         val notification = buildNotification(alarmId)
         startForeground(NOTIFICATION_ID, notification)

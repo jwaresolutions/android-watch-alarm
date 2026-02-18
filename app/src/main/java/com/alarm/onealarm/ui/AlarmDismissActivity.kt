@@ -52,13 +52,13 @@ class AlarmDismissActivity : ComponentActivity() {
     }
 
     private fun snoozeAlarm(alarmId: Int) {
-        AlarmForegroundService.stop(this)
         val prefs = applicationContext.getSharedPreferences("alarm_prefs", Context.MODE_PRIVATE)
         val snoozeMins = prefs.getInt("snooze_duration", 10)
         val snoozeTime = System.currentTimeMillis() + snoozeMins * 60 * 1000L
         Log.w("1Alarm", "Scheduling snooze: alarmId=$alarmId mins=$snoozeMins triggerAt=$snoozeTime")
         AlarmScheduler(applicationContext).scheduleSnooze(alarmId, snoozeTime)
         Log.w("1Alarm", "Snooze scheduled successfully")
+        AlarmForegroundService.stop(this)
         AlarmComplicationService.requestUpdate(applicationContext)
         finish()
     }
