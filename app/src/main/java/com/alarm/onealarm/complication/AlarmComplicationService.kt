@@ -66,6 +66,7 @@ class AlarmComplicationService : SuspendingComplicationDataSourceService() {
             text = countdownText,
             contentDescription = PlainComplicationText.Builder("Time until alarm").build()
         )
+            .setMonochromaticImage(alarmIcon)
             .setTapAction(tapIntent)
             .build()
     }
