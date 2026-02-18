@@ -6,12 +6,13 @@ import android.content.Context
 import android.content.Intent
 import androidx.wear.watchface.complications.data.ComplicationData
 import androidx.wear.watchface.complications.data.ComplicationType
-import androidx.wear.watchface.complications.data.NoDataComplicationData
+import androidx.wear.watchface.complications.data.MonochromaticImage
 import androidx.wear.watchface.complications.data.PlainComplicationText
 import androidx.wear.watchface.complications.data.ShortTextComplicationData
 import androidx.wear.watchface.complications.data.TimeDifferenceComplicationText
 import androidx.wear.watchface.complications.data.TimeDifferenceStyle
 import androidx.wear.watchface.complications.data.CountDownTimeReference
+import android.graphics.drawable.Icon
 import androidx.wear.watchface.complications.datasource.ComplicationDataSourceUpdateRequester
 import androidx.wear.watchface.complications.datasource.ComplicationRequest
 import androidx.wear.watchface.complications.datasource.SuspendingComplicationDataSourceService
@@ -34,8 +35,24 @@ class AlarmComplicationService : SuspendingComplicationDataSourceService() {
     ): ComplicationData {
         val repository = AlarmRepository(applicationContext)
         val enabledAlarms = repository.getEnabledAlarms()
+        val tapIntent = PendingIntent.getActivity(
+            this, 0,
+            Intent(this, MainActivity::class.java),
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val alarmIcon = MonochromaticImage.Builder(
+            Icon.createWithResource(this, com.alarm.onealarm.R.drawable.ic_alarm_complication)
+        ).build()
+
         val nextTrigger = AlarmScheduler(applicationContext).findNextTriggerTime(enabledAlarms)
-            ?: return NoDataComplicationData()
+            ?: return ShortTextComplicationData.Builder(
+                text = PlainComplicationText.Builder("--").build(),
+                contentDescription = PlainComplicationText.Builder("No alarm set").build()
+            )
+                .setMonochromaticImage(alarmIcon)
+                .setTapAction(tapIntent)
+                .build()
 
         val countdownText = TimeDifferenceComplicationText.Builder(
             TimeDifferenceStyle.SHORT_DUAL_UNIT,
@@ -44,12 +61,6 @@ class AlarmComplicationService : SuspendingComplicationDataSourceService() {
             .setMinimumTimeUnit(java.util.concurrent.TimeUnit.MINUTES)
             .setDisplayAsNow(true)
             .build()
-
-        val tapIntent = PendingIntent.getActivity(
-            this, 0,
-            Intent(this, MainActivity::class.java),
-            PendingIntent.FLAG_IMMUTABLE
-        )
 
         return ShortTextComplicationData.Builder(
             text = countdownText,
