@@ -1,0 +1,36 @@
+{
+  "id": 1,
+  "title": "Randomize vibration pattern to improve wake effectiveness",
+  "description": "The current constant vibration pattern can be easy to sleep through because the body habituates to a repeating stimulus. Modify the vibration pattern to include randomized intervals, intensities, or durations so it is more jarring and effective at waking the user.",
+  "status": "done",
+  "priority": "high",
+  "labels": [
+    "enhancement",
+    "vibration"
+  ],
+  "projectId": null,
+  "cycle": null,
+  "personas": [],
+  "files": [],
+  "blockedBy": [],
+  "reviews": {
+    "PM": {
+      "verdict": null,
+      "notes": ""
+    },
+    "Dev Lead": {
+      "verdict": null,
+      "notes": ""
+    },
+    "Security": {
+      "verdict": null,
+      "notes": ""
+    }
+  },
+  "userVote": {
+    "verdict": null,
+    "notes": ""
+  },
+  "createdAt": "2026-03-12T00:00:00Z",
+  "updatedAt": "2026-03-12T01:00:00Z"
+}

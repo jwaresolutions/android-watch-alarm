@@ -1,0 +1,42 @@
+{
+  "id": 3,
+  "title": "No delete confirmation dialog \u2014 accidental alarm deletion",
+  "description": "Tapping the 32dp delete button immediately removes the alarm with no confirmation. On a small watch screen, accidental taps are common. Users lose their alarm with no way to undo.",
+  "status": "done",
+  "priority": "high",
+  "labels": [
+    "ux",
+    "safety",
+    "accessibility"
+  ],
+  "projectId": null,
+  "cycle": 1,
+  "personas": [
+    "Jordan"
+  ],
+  "files": [
+    "app/src/main/java/com/alarm/onealarm/ui/screens/AlarmEditScreen.kt",
+    "app/src/main/java/com/alarm/onealarm/navigation/NavGraph.kt"
+  ],
+  "blockedBy": [],
+  "reviews": {
+    "PM": {
+      "verdict": "approve",
+      "notes": "Must-fix. Accidental data loss."
+    },
+    "Dev Lead": {
+      "verdict": "approve",
+      "notes": "Add confirm dialog wrapping onDelete callback, ~15 lines."
+    },
+    "Security": {
+      "verdict": "approve",
+      "notes": "Prevents accidental data loss."
+    }
+  },
+  "userVote": {
+    "verdict": null,
+    "notes": ""
+  },
+  "createdAt": "2026-03-12T00:00:00Z",
+  "updatedAt": "2026-03-12T01:00:00Z"
+}

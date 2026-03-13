@@ -1,0 +1,42 @@
+{
+  "id": 2,
+  "title": "No visual affordance for rotary bezel input on time picker",
+  "description": "First-time users have no way to discover that hour/minute text is tappable and that the rotary bezel scrolls values. No hint text, no highlight ring, no animation. Users will try tapping repeatedly with no result.",
+  "status": "done",
+  "priority": "high",
+  "labels": [
+    "ux",
+    "onboarding",
+    "accessibility"
+  ],
+  "projectId": null,
+  "cycle": 1,
+  "personas": [
+    "Alex",
+    "Jordan"
+  ],
+  "files": [
+    "app/src/main/java/com/alarm/onealarm/ui/screens/AlarmEditScreen.kt"
+  ],
+  "blockedBy": [],
+  "reviews": {
+    "PM": {
+      "verdict": "approve",
+      "notes": "Must-fix. First-time users won't discover bezel control."
+    },
+    "Dev Lead": {
+      "verdict": "approve",
+      "notes": "Add hint text below time display, <5 lines."
+    },
+    "Security": {
+      "verdict": null,
+      "notes": ""
+    }
+  },
+  "userVote": {
+    "verdict": null,
+    "notes": ""
+  },
+  "createdAt": "2026-03-12T00:00:00Z",
+  "updatedAt": "2026-03-12T01:00:00Z"
+}

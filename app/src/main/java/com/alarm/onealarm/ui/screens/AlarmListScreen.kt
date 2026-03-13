@@ -41,7 +41,14 @@ fun AlarmListScreen(
                     Text(
                         text = "No alarms",
                         style = MaterialTheme.typography.body1,
-                        color = MaterialTheme.colors.onBackground.copy(alpha = 0.6f),
+                        color = MaterialTheme.colors.onBackground.copy(alpha = 0.8f),
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = "Tap + to add one",
+                        style = MaterialTheme.typography.caption3,
+                        color = MaterialTheme.colors.onBackground.copy(alpha = 0.5f),
                         textAlign = TextAlign.Center
                     )
                 }

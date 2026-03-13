@@ -1,0 +1,40 @@
+{
+  "id": 13,
+  "title": "Settings snooze label cryptic \u2014 'Snooze Xm' unclear",
+  "description": "The settings screen shows 'Snooze 10m' with +/- buttons but no explanatory label like 'Snooze Duration'. The 'm' suffix for minutes isn't immediately clear to all users.",
+  "status": "done",
+  "priority": "low",
+  "labels": [
+    "ux",
+    "clarity"
+  ],
+  "projectId": null,
+  "cycle": 1,
+  "personas": [
+    "Jordan"
+  ],
+  "files": [
+    "app/src/main/java/com/alarm/onealarm/ui/screens/SettingsScreen.kt"
+  ],
+  "blockedBy": [],
+  "reviews": {
+    "PM": {
+      "verdict": "approve",
+      "notes": "Quick fix. Improves clarity."
+    },
+    "Dev Lead": {
+      "verdict": "approve",
+      "notes": "Change label to 'Snooze: X min', 1 line."
+    },
+    "Security": {
+      "verdict": null,
+      "notes": ""
+    }
+  },
+  "userVote": {
+    "verdict": null,
+    "notes": ""
+  },
+  "createdAt": "2026-03-12T00:00:00Z",
+  "updatedAt": "2026-03-12T01:00:00Z"
+}

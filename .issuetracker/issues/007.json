@@ -1,0 +1,40 @@
+{
+  "id": 7,
+  "title": "Save/Delete buttons are 32dp icon-only with no text labels",
+  "description": "The Save (green checkmark) and Delete (red trash) buttons in AlarmEditScreen are only 32dp circles with no text. On a watch screen, this is hard to tap and the meaning of abstract icons may not be clear to all users.",
+  "status": "done",
+  "priority": "medium",
+  "labels": [
+    "ux",
+    "accessibility"
+  ],
+  "projectId": null,
+  "cycle": 1,
+  "personas": [
+    "Jordan"
+  ],
+  "files": [
+    "app/src/main/java/com/alarm/onealarm/ui/screens/AlarmEditScreen.kt"
+  ],
+  "blockedBy": [],
+  "reviews": {
+    "PM": {
+      "verdict": "approve",
+      "notes": "Should-fix. Accessibility concern for all users."
+    },
+    "Dev Lead": {
+      "verdict": "approve",
+      "notes": "Increase button size to 40dp, <5 lines change."
+    },
+    "Security": {
+      "verdict": null,
+      "notes": ""
+    }
+  },
+  "userVote": {
+    "verdict": null,
+    "notes": ""
+  },
+  "createdAt": "2026-03-12T00:00:00Z",
+  "updatedAt": "2026-03-12T01:00:00Z"
+}

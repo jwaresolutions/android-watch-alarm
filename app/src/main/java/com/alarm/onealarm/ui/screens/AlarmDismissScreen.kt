@@ -13,27 +13,34 @@ import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.ButtonDefaults
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
+import androidx.wear.compose.material.TimeText
 
 @Composable
 fun AlarmDismissScreen(
     onDismiss: () -> Unit,
-    onSnooze: () -> Unit
+    onSnooze: () -> Unit,
+    snoozeMins: Int
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black)
     ) {
-        // "Alarm!" label near top
-        Text(
-            text = "Alarm!",
-            style = MaterialTheme.typography.title2,
-            color = MaterialTheme.colors.primary,
-            textAlign = TextAlign.Center,
+        // TimeText + "Alarm!" label near top
+        Column(
             modifier = Modifier
                 .align(Alignment.TopCenter)
-                .padding(top = 24.dp)
-        )
+                .padding(top = 8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            TimeText()
+            Text(
+                text = "Alarm!",
+                style = MaterialTheme.typography.title2,
+                color = MaterialTheme.colors.primary,
+                textAlign = TextAlign.Center
+            )
+        }
 
         // Large snooze button in center
         Button(
@@ -45,7 +52,7 @@ fun AlarmDismissScreen(
             )
         ) {
             Text(
-                text = "Snooze",
+                text = "Snooze\n${snoozeMins}m",
                 style = MaterialTheme.typography.title3,
                 color = Color.Black,
                 textAlign = TextAlign.Center
@@ -58,12 +65,12 @@ fun AlarmDismissScreen(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 16.dp)
-                .size(width = 80.dp, height = 32.dp),
+                .size(width = 100.dp, height = 40.dp),
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.DarkGray
+                backgroundColor = Color(0xFF555555)
             )
         ) {
-            Text("Dismiss", style = MaterialTheme.typography.caption2, color = Color.White)
+            Text("Dismiss", style = MaterialTheme.typography.caption1, color = Color.White)
         }
     }
 }

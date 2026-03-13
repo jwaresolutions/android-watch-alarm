@@ -27,11 +27,14 @@ class AlarmDismissActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val alarmId = intent.getIntExtra("alarm_id", -1)
+        val prefs = applicationContext.getSharedPreferences("alarm_prefs", Context.MODE_PRIVATE)
+        val snoozeMins = prefs.getInt("snooze_duration", 10)
 
         setContent {
             AlarmDismissScreen(
                 onDismiss = { dismissAlarm(alarmId) },
-                onSnooze = { snoozeAlarm(alarmId) }
+                onSnooze = { snoozeAlarm(alarmId) },
+                snoozeMins = snoozeMins
             )
         }
     }

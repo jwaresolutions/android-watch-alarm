@@ -1,0 +1,21 @@
+{
+  "id": 8,
+  "title": "No feedback/confirmation when alarm is saved",
+  "description": "After tapping Save in AlarmEditScreen, the screen navigates back immediately with no visual confirmation that the alarm was created or updated.",
+  "status": "closed",
+  "priority": "medium",
+  "labels": ["ux"],
+  "projectId": null,
+  "cycle": 1,
+  "personas": ["Alex"],
+  "files": ["app/src/main/java/com/alarm/onealarm/navigation/NavGraph.kt"],
+  "blockedBy": [],
+  "reviews": {
+    "PM": {"verdict": "reject", "notes": "Standard Wear OS behavior is immediate save and navigate back."},
+    "Dev Lead": {"verdict": "reject", "notes": "Would need toast/snackbar infrastructure not present in project."},
+    "Security": {"verdict": null, "notes": ""}
+  },
+  "userVote": {"verdict": null, "notes": ""},
+  "createdAt": "2026-03-12T00:00:00Z",
+  "updatedAt": "2026-03-12T00:00:00Z"
+}

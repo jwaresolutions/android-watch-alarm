@@ -8,9 +8,12 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.graphics.PixelFormat
+import android.os.Handler
 import android.os.IBinder
+import android.os.Looper
 import android.os.VibrationEffect
 import android.os.Vibrator
+import kotlin.random.Random
 import android.util.Log
 import android.view.WindowManager
 import androidx.core.app.NotificationCompat
@@ -20,6 +23,7 @@ import com.alarm.onealarm.ui.AlarmDismissActivity
 class AlarmForegroundService : Service() {
 
     private var vibrator: Vibrator? = null
+    private var vibrationHandler: Handler? = null
 
     companion object {
         const val CHANNEL_ID = "alarm_channel_v2"
@@ -160,13 +164,50 @@ class AlarmForegroundService : Service() {
 
     private fun startVibration() {
         vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        val timings = longArrayOf(0, 500, 500)
-        val amplitudes = intArrayOf(0, 200, 0)
-        val effect = VibrationEffect.createWaveform(timings, amplitudes, 0)
-        vibrator?.vibrate(effect)
+        vibrationHandler = Handler(Looper.getMainLooper())
+        scheduleNextVibrationBurst()
+    }
+
+    private fun scheduleNextVibrationBurst() {
+        vibrationHandler?.post {
+            if (!isAlarmFiring) return@post
+
+            // Generate a random burst pattern (3-6 pulses per burst)
+            val pulseCount = Random.nextInt(3, 7)
+            val timings = mutableListOf<Long>()
+            val amplitudes = mutableListOf<Int>()
+
+            // Initial delay (0 = start immediately)
+            timings.add(0)
+            amplitudes.add(0)
+
+            for (i in 0 until pulseCount) {
+                // Random vibration duration: 200-800ms
+                timings.add(Random.nextLong(200, 801))
+                // Random amplitude: 150-255
+                amplitudes.add(Random.nextInt(150, 256))
+                // Random pause: 100-500ms
+                timings.add(Random.nextLong(100, 501))
+                amplitudes.add(0)
+            }
+
+            val effect = VibrationEffect.createWaveform(
+                timings.toLongArray(),
+                amplitudes.toIntArray(),
+                -1  // Don't repeat — we'll schedule the next burst ourselves
+            )
+            vibrator?.vibrate(effect)
+
+            // Schedule next burst after this one finishes + a random gap (200-1000ms)
+            val burstDuration = timings.sum()
+            val gap = Random.nextLong(200, 1001)
+            vibrationHandler?.postDelayed({ scheduleNextVibrationBurst() }, burstDuration + gap)
+        }
     }
 
     private fun stopVibration() {
+        vibrationHandler?.removeCallbacksAndMessages(null)
+        vibrationHandler = null
         vibrator?.cancel()
     }
 

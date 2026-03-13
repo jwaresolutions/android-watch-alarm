@@ -1,0 +1,41 @@
+{
+  "id": 12,
+  "title": "Dismiss button too small and low contrast on alarm screen",
+  "description": "The Dismiss button is 80x32dp dark gray on a black background. It's nearly invisible and too small to reliably tap, especially when the user is groggy and half-asleep. This is the most critical action on the screen.",
+  "status": "done",
+  "priority": "low",
+  "labels": [
+    "ux",
+    "accessibility",
+    "safety"
+  ],
+  "projectId": null,
+  "cycle": 1,
+  "personas": [
+    "Jordan"
+  ],
+  "files": [
+    "app/src/main/java/com/alarm/onealarm/ui/screens/AlarmDismissScreen.kt"
+  ],
+  "blockedBy": [],
+  "reviews": {
+    "PM": {
+      "verdict": "approve",
+      "notes": "Should-fix. Critical action too hard to hit."
+    },
+    "Dev Lead": {
+      "verdict": "approve",
+      "notes": "Increase size and lighten color, <5 lines."
+    },
+    "Security": {
+      "verdict": "approve",
+      "notes": "User safety \u2014 must be able to dismiss alarm reliably."
+    }
+  },
+  "userVote": {
+    "verdict": null,
+    "notes": ""
+  },
+  "createdAt": "2026-03-12T00:00:00Z",
+  "updatedAt": "2026-03-12T01:00:00Z"
+}

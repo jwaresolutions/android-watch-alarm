@@ -1,0 +1,21 @@
+{
+  "id": 6,
+  "title": "No indication which alarm is firing on dismiss screen",
+  "description": "The alarm dismiss screen shows only 'Alarm!' with no alarm time or label. Users with multiple alarms can't tell which one fired, making it harder to decide whether to snooze or dismiss.",
+  "status": "open",
+  "priority": "medium",
+  "labels": ["ux", "information"],
+  "projectId": null,
+  "cycle": 1,
+  "personas": ["Maria"],
+  "files": ["app/src/main/java/com/alarm/onealarm/ui/screens/AlarmDismissScreen.kt", "app/src/main/java/com/alarm/onealarm/ui/AlarmDismissActivity.kt"],
+  "blockedBy": [],
+  "reviews": {
+    "PM": {"verdict": "defer", "notes": "Nice-to-have. Usually only one alarm fires at a time."},
+    "Dev Lead": {"verdict": "defer", "notes": "Needs passing alarm time through intent chain and loading from DB."},
+    "Security": {"verdict": null, "notes": ""}
+  },
+  "userVote": {"verdict": null, "notes": ""},
+  "createdAt": "2026-03-12T00:00:00Z",
+  "updatedAt": "2026-03-12T00:00:00Z"
+}

@@ -1,0 +1,40 @@
+{
+  "id": 11,
+  "title": "'No alarms' text too dim at 0.6f alpha",
+  "description": "The empty state 'No alarms' text uses 0.6f alpha on the onBackground color, making it hard to read for users with poor vision, especially on OLED watch screens in bright environments.",
+  "status": "done",
+  "priority": "low",
+  "labels": [
+    "ux",
+    "accessibility"
+  ],
+  "projectId": null,
+  "cycle": 1,
+  "personas": [
+    "Jordan"
+  ],
+  "files": [
+    "app/src/main/java/com/alarm/onealarm/ui/screens/AlarmListScreen.kt"
+  ],
+  "blockedBy": [],
+  "reviews": {
+    "PM": {
+      "verdict": "approve",
+      "notes": "Quick fix. Accessibility improvement."
+    },
+    "Dev Lead": {
+      "verdict": "approve",
+      "notes": "Change alpha from 0.6f to 0.8f, 1 line."
+    },
+    "Security": {
+      "verdict": null,
+      "notes": ""
+    }
+  },
+  "userVote": {
+    "verdict": null,
+    "notes": ""
+  },
+  "createdAt": "2026-03-12T00:00:00Z",
+  "updatedAt": "2026-03-12T01:00:00Z"
+}

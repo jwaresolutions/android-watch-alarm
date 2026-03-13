@@ -52,7 +52,7 @@ fun SettingsScreen() {
                         label = { Text("-") }
                     )
                     Text(
-                        text = "Snooze ${snoozeMins}m",
+                        text = "Snooze: ${snoozeMins} min",
                         style = MaterialTheme.typography.body1,
                         modifier = Modifier.padding(horizontal = 8.dp)
                     )

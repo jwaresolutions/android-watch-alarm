@@ -1,0 +1,40 @@
+{
+  "id": 10,
+  "title": "No current time shown on alarm dismiss screen",
+  "description": "The alarm dismiss screen has no clock display. Users waking up groggily can't see what time it is while deciding whether to snooze or dismiss.",
+  "status": "done",
+  "priority": "medium",
+  "labels": [
+    "ux",
+    "information"
+  ],
+  "projectId": null,
+  "cycle": 1,
+  "personas": [
+    "Maria"
+  ],
+  "files": [
+    "app/src/main/java/com/alarm/onealarm/ui/screens/AlarmDismissScreen.kt"
+  ],
+  "blockedBy": [],
+  "reviews": {
+    "PM": {
+      "verdict": "approve",
+      "notes": "Should-fix. Critical context when waking up."
+    },
+    "Dev Lead": {
+      "verdict": "approve",
+      "notes": "Add TimeText composable at top, <3 lines."
+    },
+    "Security": {
+      "verdict": null,
+      "notes": ""
+    }
+  },
+  "userVote": {
+    "verdict": null,
+    "notes": ""
+  },
+  "createdAt": "2026-03-12T00:00:00Z",
+  "updatedAt": "2026-03-12T01:00:00Z"
+}

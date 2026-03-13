@@ -1,0 +1,21 @@
+{
+  "id": 9,
+  "title": "No 'next alarm in X' display on alarm list",
+  "description": "The alarm list shows individual alarm times but no summary of when the next alarm will fire (e.g., 'Next alarm in 6h 30m'). Users with multiple alarms must mentally calculate.",
+  "status": "open",
+  "priority": "medium",
+  "labels": ["ux", "information"],
+  "projectId": null,
+  "cycle": 1,
+  "personas": ["Maria"],
+  "files": ["app/src/main/java/com/alarm/onealarm/ui/screens/AlarmListScreen.kt"],
+  "blockedBy": [],
+  "reviews": {
+    "PM": {"verdict": "defer", "notes": "Nice-to-have. The watch face complication already shows countdown."},
+    "Dev Lead": {"verdict": "defer", "notes": "Needs time computation logic in composable, not a quick fix."},
+    "Security": {"verdict": null, "notes": ""}
+  },
+  "userVote": {"verdict": null, "notes": ""},
+  "createdAt": "2026-03-12T00:00:00Z",
+  "updatedAt": "2026-03-12T00:00:00Z"
+}

@@ -42,6 +42,7 @@ fun AlarmEditScreen(
     var minute by remember { mutableIntStateOf(alarm?.minute ?: 0) }
     var amPmIndex by remember { mutableIntStateOf(initialAmPm) }
     var repeatDays by remember { mutableIntStateOf(alarm?.repeatDays ?: 0) }
+    var showDeleteConfirm by remember { mutableStateOf(false) }
 
     // 0=hour, 1=minute, -1=none
     var focusedField by remember { mutableIntStateOf(-1) }
@@ -79,11 +80,11 @@ fun AlarmEditScreen(
             ) {
                 if (alarm != null && onDelete != null) {
                     Button(
-                        onClick = { onDelete(alarm) },
+                        onClick = { showDeleteConfirm = true },
                         colors = ButtonDefaults.buttonColors(
                             backgroundColor = Color(0xFF8B0000)
                         ),
-                        modifier = Modifier.size(32.dp)
+                        modifier = Modifier.size(40.dp)
                     ) {
                         Icon(Icons.Default.Delete, contentDescription = "Delete")
                     }
@@ -102,7 +103,7 @@ fun AlarmEditScreen(
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color(0xFF006400)
                     ),
-                    modifier = Modifier.size(32.dp)
+                    modifier = Modifier.size(40.dp)
                 ) {
                     Icon(Icons.Default.Check, contentDescription = "Save")
                 }
@@ -166,6 +167,13 @@ fun AlarmEditScreen(
                 )
             }
 
+            Text(
+                text = "Tap time, use crown to adjust",
+                style = MaterialTheme.typography.caption3,
+                color = MaterialTheme.colors.onBackground.copy(alpha = 0.5f),
+                textAlign = TextAlign.Center
+            )
+
             // Day selector at bottom - rows of 4 then 3
             DaySelector(
                 repeatDays = repeatDays,
@@ -173,6 +181,44 @@ fun AlarmEditScreen(
                     repeatDays = repeatDays xor (1 shl bitIndex)
                 }
             )
+        }
+
+        if (showDeleteConfirm && alarm != null && onDelete != null) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.Black.copy(alpha = 0.9f)),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    Text(
+                        text = "Delete alarm?",
+                        style = MaterialTheme.typography.title3,
+                        color = MaterialTheme.colors.onBackground
+                    )
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        Button(
+                            onClick = { showDeleteConfirm = false },
+                            colors = ButtonDefaults.secondaryButtonColors(),
+                            modifier = Modifier.size(48.dp)
+                        ) {
+                            Text("No", style = MaterialTheme.typography.caption1)
+                        }
+                        Button(
+                            onClick = { onDelete(alarm) },
+                            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF8B0000)),
+                            modifier = Modifier.size(48.dp)
+                        ) {
+                            Text("Yes", style = MaterialTheme.typography.caption1)
+                        }
+                    }
+                }
+            }
         }
     }
 }
